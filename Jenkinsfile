@@ -28,7 +28,7 @@ pipeline {
                     sh '''
                     docker pull docker.elastic.co/logstash/logstash:${ELK_STACK_VERSION}
                     docker run -d --name logstash -p 5044:5044 -p 9600:9600 \
-                        -v $WORKSPACE/logstash.conf:/usr/share/logstash/pipeline/logstash.conf \
+                        -v ${WORKSPACE}/logstash.conf:/usr/share/logstash/pipeline/logstash.conf \
                         docker.elastic.co/logstash/logstash:${ELK_STACK_VERSION}
                     '''
 
@@ -60,8 +60,8 @@ pipeline {
         always {
             // Удаление контейнеров после завершения сборки
             sh '''
-            docker stop elasticsearch logstash kibana
-            docker rm elasticsearch logstash kibana
+            docker stop elasticsearch logstash kibana || true
+            docker rm elasticsearch logstash kibana || true
             '''
         }
     }
