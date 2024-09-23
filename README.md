@@ -18,11 +18,10 @@ terraform --version
 1.2. Настройте AWS CLI
 Установите AWS CLI, если еще не установили: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html.
 Настройте AWS CLI:
-
 aws configure
 Введите ваш AWS Access Key ID, Secret Access Key, регион (например, us-east-1) и формат вывода (например, json).
-Шаг 2. Создание файлов Terraform
 
+Шаг 2. Создание файлов Terraform
 2.1. main.tf — Основной файл инфраструктуры
 Создайте файл main.tf с следующим содержимым:
 
@@ -237,9 +236,9 @@ terraform apply
 
 Шаг 4. Настройка CI/CD
 Для автоматического запуска Terraform при каждом пуше в репозиторий, используйте любой CI-инструмент. Пример конфигурации для GitHub Actions:
+
 4.1. Создание файла .github/workflows/terraform.yml:
-yaml
-Копировать код
+
 name: Terraform
 
 on:
